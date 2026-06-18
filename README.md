@@ -1,108 +1,208 @@
 # E-Summit 2026 — Shift Gears
 
-Welcome to the E-Summit 2026 React web application. This is IIT Dharwad's flagship entrepreneurship summit platform. The codebase has been optimized for speed, transitions, and modularity using clean abstractions.
+> The official web portal for **E-Summit 2026**, IIT Dharwad's flagship entrepreneurship summit redefining the future of mobility, electric vehicles, and autonomous transport.
+
+The platform lets attendees **browse events**, **purchase passes**, and **get event info** — all wrapped in a high-performance React app with GSAP-powered page transitions and a motorsport-inspired visual theme.
 
 ---
 
 ## Tech Stack
 
-- **Core**: [React 19](https://react.dev/) & [Vite 7](https://vite.dev/)
-- **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) & Vanilla CSS (`src/styles.css`)
-- **Routing**: [React Router Dom v6](https://reactrouter.com/)
-- **Animations**: [GSAP 3](https://gsap.com/) (Timeline, ScrollTrigger, and page transitions)
-- **Scrolling**: [Locomotive Scroll](https://locomotivemtl.github.io/locomotive-scroll/) & [Lenis](https://lenis.darkroom.engineering/)
-- **State Management**: LocalStorage & [TanStack React Query v5](https://tanstack.com/query/latest)
+| Layer | Library / Tool |
+|---|---|
+| Core | [React 19](https://react.dev/) & [Vite 7](https://vite.dev/) |
+| Styling | [Tailwind CSS v4](https://tailwindcss.com/) + `src/styles.css` (custom vars) |
+| Routing | [React Router DOM v6](https://reactrouter.com/) |
+| Animations | [GSAP 3](https://gsap.com/) — ScrollTrigger, Timeline, page transitions |
+| Smooth Scroll | [Locomotive Scroll v5](https://locomotivemtl.github.io/locomotive-scroll/) + [Lenis](https://lenis.darkroom.engineering/) |
+| Server State | [TanStack React Query v5](https://tanstack.com/query/latest) |
+| Client State | `localStorage` (via custom hooks — see `src/hooks/`) |
+| UI Primitives | [Radix UI](https://www.radix-ui.com/) + [shadcn/ui](https://ui.shadcn.com/) |
+| Forms | [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/) |
+| Icons | [Lucide React](https://lucide.dev/) |
 
 ---
 
-## Project Structure
+## Prerequisites
 
-Here is the architecture layout of E-Summit 2026:
+Make sure you have these installed before cloning:
 
-```text
-ESummit26.NEW/
-├── adr/                      # Architectural Decision Records (ADRs)
-│   ├── README.md             # Guidelines for writing and categorizing ADRs
-│   └── 0001-*.md             # ADR 0001: DRY Refactoring & Custom Hooks
-├── docs/                     # General Documentation
-│   └── README.md             # Git commands, branch conventions, and troubleshooting
-├── src/                      # Source Code
-│   ├── assets/               # Image assets (dials, hero cars, tracks)
-│   │   └── README.md
-│   ├── components/           # Shared high-level components & modals
-│   │   ├── ui/               # Reusable atomic UI elements (buttons, inputs, etc.)
-│   │   │   └── README.md
-│   │   ├── Nav.jsx           # Global Navigation Menu
-│   │   ├── Footer.jsx        # Footer layout
-│   │   ├── CheckoutModal.jsx # Ticket purchase booking modal
-│   │   └── README.md
-│   ├── hooks/                # Custom hooks (localStorage sync, document titles, navigation)
-│   │   └── README.md
-│   ├── lib/                  # Static databases, helper hooks, utilities
-│   │   ├── store.js          # Databases (events, pricing, FAQ data)
-│   │   ├── transition.js     # GSAP page-transition timeline controller
-│   │   └── README.md
-│   ├── pages/                # Route pages and entry points
-│   │   ├── Home.jsx          # Homepage
-│   │   ├── Buy.jsx           # Booking passes page
-│   │   ├── Events.jsx         # Event grids catalog
-│   │   └── README.md
-│   ├── App.jsx               # Router mapping and main provider declarations
-│   ├── main.jsx              # React mounting root entrypoint
-│   └── styles.css            # Stylesheets & Tailwind variables definitions
-├── index.html                # Main application frame (with Outfits & Outfit fonts)
-├── package.json              # Scripts and package dependencies catalog
-├── vite.config.js            # Vite configurations (path aliases, plugins)
-└── components.json           # Shadcn style/directory alias configurations
+- **Node.js** v20 or higher
+- **npm** v10 or higher (comes with Node 20)
+
+Verify with:
+
+```bash
+node -v   # should be >= 20
+npm -v    # should be >= 10
 ```
 
 ---
 
 ## Getting Started
 
-To spin up the E-Summit dev server:
-
 ```bash
-# 1. Install dependencies
+# 1. Clone the repo
+git clone https://github.com/latakshsariyapatidar/eSummit.NEW.git
+cd eSummit.NEW
+
+# 2. Install dependencies
 npm install
 
-# 2. Run the local development server
+# 3. Start the dev server
 npm run dev
-
-# 3. Compile optimization bundle for production
-npm run build
-
-# 4. Run ESLint code checks
-npm run lint
-
-# 5. Format the codebase
-npm run format
 ```
+
+The app will be live at `http://localhost:5173`.
+
+### All available scripts
+
+| Command | What it does |
+|---|---|
+| `npm run dev` | Start local dev server with HMR |
+| `npm run build` | Production bundle into `dist/` |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint across the codebase |
+| `npm run format` | Auto-format with Prettier |
+
+> **Before every commit:** run `npm run lint && npm run format` to keep the codebase clean.
+
+---
+
+## Project Structure
+
+```text
+eSummit.NEW/
+├── adr/                        # Architectural Decision Records
+│   ├── README.md               # How to write and categorize ADRs
+│   └── 0001-*.md               # ADR 0001: DRY Refactoring & Custom Hooks
+├── docs/                       # Developer documentation
+│   └── README.md               # Git commands, rebase, conflict resolution, stashing
+├── src/
+│   ├── assets/                 # Static images (dials, hero cars, track textures)
+│   │   └── README.md
+│   ├── components/             # Shared layout components & modals
+│   │   ├── ui/                 # Atomic UI primitives (Button, Input, Dialog, etc.)
+│   │   │   └── README.md       # Lists all available primitives — check here first
+│   │   ├── Nav.jsx             # Global top navigation bar
+│   │   ├── Footer.jsx          # Site footer
+│   │   ├── CheckoutModal.jsx   # Ticket purchase & booking modal
+│   │   └── README.md
+│   ├── hooks/                  # Custom React hooks
+│   │   └── README.md           # Lists every hook with usage examples — read before writing new state logic
+│   ├── lib/                    # Data, utilities, and animation controllers
+│   │   ├── store.js            # Static data: events catalog, pricing tiers, FAQ content
+│   │   ├── transition.js       # GSAP page-transition timeline (used in App.jsx)
+│   │   └── README.md
+│   ├── pages/                  # Top-level route components
+│   │   ├── Home.jsx            # Landing page with hero & event highlights
+│   │   ├── Events.jsx          # Full event catalog grid
+│   │   ├── Buy.jsx             # Pass selection & checkout flow
+│   │   └── README.md
+│   ├── App.jsx                 # Route definitions & top-level providers
+│   ├── main.jsx                # React DOM mount point
+│   └── styles.css              # Global CSS + Tailwind v4 theme variable definitions
+├── index.html                  # HTML shell (loads Outfit font from Google Fonts)
+├── vite.config.js              # Path aliases (@/ → src/) and Vite plugins
+├── components.json             # shadcn/ui configuration
+└── package.json
+```
+
+---
+
+## Styling Guide
+
+The project uses **both Tailwind v4 and vanilla CSS** — here's what goes where:
+
+| Use case | Where to put it |
+|---|---|
+| Spacing, layout, flex/grid, colors from the design system | Tailwind utility classes inline |
+| CSS custom properties (design tokens, fonts, animation vars) | `src/styles.css` |
+| One-off keyframe animations or complex selectors | `src/styles.css` |
+| New UI primitive (button, badge, input…) | `src/components/ui/` — check if it exists in shadcn first |
+
+**Never** add `@apply` blocks or hardcode pixel values when a Tailwind token exists.
 
 ---
 
 ## Contributing Guidelines
 
-We welcome contributions! To keep our codebase clean:
+### DRY Principle — reuse before you write
 
-1. **Follow the DRY Principle**: Never write duplicate click handlers, manual localStorage operations, page banners, or inline HTML inputs. Always reuse existing hooks in `src/hooks/` and UI primitives in `src/components/ui/`.
-2. **Document Your Folders**: If you add new modules/hooks/pages, document them at the top of the corresponding directory's `README.md`.
-3. **Format & Lint**: Run `npm run lint` and `npm run format` prior to pushing your commits.
+Before writing new logic, check what already exists:
+
+| Instead of... | Use... |
+|---|---|
+| `localStorage.setItem(...)` manually | Custom hook from `src/hooks/` (see its README) |
+| Inline `<input>` or `<button>` HTML | Primitive from `src/components/ui/` |
+| Raw `window.location` navigation | Navigation hook from `src/hooks/` |
+| Copy-pasting a page banner/header | Shared component from `src/components/` |
+
+### Adding new code
+
+1. **New hook** → add it to `src/hooks/`, document it in `src/hooks/README.md`.
+2. **New page** → add the route in `App.jsx`, document the page in `src/pages/README.md`.
+3. **New UI primitive** → add to `src/components/ui/`, document in its `README.md`.
+4. **Major architectural decision** → write an ADR. See `adr/README.md` for the template.
 
 ---
 
-## Branching & Git Conventions
+## Branching & Git Workflow
 
-- **Branch Naming**:
-  - `feature/<issue-id>-<short-description>` (e.g. `feature/12-stripe-integration`)
-  - `bugfix/<issue-id>-<short-description>` (e.g. `bugfix/44-layout-alignment`)
-- **Stuck with Git?**: Refer to the detailed **[docs/README.md](file:///d:/Projects/ESummit26.NEW/docs/README.md)** for help on rebasing, conflict resolution, stashing, and discarding changes.
+We use a `main → dev → feature` branch model.
+
+```
+main          ← production-ready, protected
+ └── dev      ← integration branch
+      ├── feature/12-stripe-integration
+      └── bugfix/44-layout-alignment
+```
+
+**Branch naming:**
+
+```bash
+feature/<issue-id>-<short-description>   # e.g. feature/12-stripe-integration
+bugfix/<issue-id>-<short-description>    # e.g. bugfix/44-layout-alignment
+```
+
+**Workflow:**
+
+```bash
+git checkout dev
+git pull origin dev
+git checkout -b feature/<issue-id>-<description>
+
+# ... make changes ...
+
+npm run lint && npm run format
+git add .
+git commit -m "feat: short description of change"
+git push origin feature/<issue-id>-<description>
+# → open a PR into dev
+```
+
+> Stuck with rebasing, merge conflicts, or stashing? See **[docs/README.md](./docs/README.md)** for step-by-step commands.
 
 ---
 
 ## Architectural Decisions (ADRs)
 
-We track significant design decisions in our **[ADR Folder](file:///d:/Projects/ESummit26.NEW/adr/README.md)**.
+Significant design decisions are tracked in the [`adr/`](./adr/) folder.
 
-- **When to add an ADR**: Add an ADR if you propose a major architectural change, introduce a new dependency, change state-management strategies, or modify styling paradigms.
-- Refer to the template instructions in [adr/README.md](file:///d:/Projects/ESummit26.NEW/adr/README.md) to add a record.
+**Write an ADR when you:**
+- Introduce a new dependency
+- Change the state management approach
+- Modify the styling paradigm
+- Propose a major architectural refactor
+
+See [`adr/README.md`](./adr/README.md) for the ADR template.
+
+---
+
+## Pages Overview
+
+| Route | Page | Description |
+|---|---|---|
+| `/` | `Home.jsx` | Landing page — hero section, summit highlights |
+| `/events` | `Events.jsx` | Full catalog of summit events |
+| `/buy` | `Buy.jsx` | Pass selection and ticket checkout |
