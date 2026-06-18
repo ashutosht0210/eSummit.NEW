@@ -4,7 +4,7 @@ Welcome to the E-Summit 2026 React web application. This is IIT Dharwad's flagsh
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 
 - **Core**: [React 19](https://react.dev/) & [Vite 7](https://vite.dev/)
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) & Vanilla CSS (`src/styles.css`)
@@ -15,7 +15,7 @@ Welcome to the E-Summit 2026 React web application. This is IIT Dharwad's flagsh
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 Here is the architecture layout of E-Summit 2026:
 
@@ -58,7 +58,7 @@ ESummit26.NEW/
 
 ---
 
-## 🛠️ Getting Started
+## Getting Started
 
 To spin up the E-Summit dev server:
 
@@ -81,7 +81,7 @@ npm run format
 
 ---
 
-## 🤝 Contributing Guidelines
+## Contributing Guidelines
 
 We welcome contributions! To keep our codebase clean:
 
@@ -91,7 +91,7 @@ We welcome contributions! To keep our codebase clean:
 
 ---
 
-## 🌿 Branching & Git Conventions
+## Branching & Git Conventions
 
 - **Branch Naming**:
   - `feature/<issue-id>-<short-description>` (e.g. `feature/12-stripe-integration`)
@@ -100,7 +100,7 @@ We welcome contributions! To keep our codebase clean:
 
 ---
 
-## 📝 Architectural Decisions (ADRs)
+## Architectural Decisions (ADRs)
 
 We track significant design decisions in our **[ADR Folder](file:///d:/Projects/ESummit26.NEW/adr/README.md)**.
 
