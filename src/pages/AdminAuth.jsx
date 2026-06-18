@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { useTransitionNavigate } from "@/hooks/useTransitionNavigate";
 
-const ADMIN_KEY = "octane2026";
+const ADMIN_KEY = import.meta.env.VITE_ADMIN_KEY;
 
 export function AdminAuth() {
   const [key, setKey] = useState("");
@@ -46,9 +46,6 @@ export function AdminAuth() {
           titleClassName="text-5xl sm:text-5xl md:text-5xl lg:text-5xl mb-2"
           className="mb-2"
         />
-        <p className="text-muted-foreground mb-8 text-sm">
-          Demo key: <span className="font-mono text-primary">octane2026</span>
-        </p>
         <form onSubmit={submit} className="space-y-4">
           <Input
             type="password"
