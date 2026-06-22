@@ -86,7 +86,38 @@ const FUNCTIONAL_TEAMS = [
       image:
         "https://ui-avatars.com/api/?name=Lataksh+Sariya&background=0D0D0C&color=fff",
     },
-    crew: [],
+    crew: [
+      {
+        name: "Aaditya Kumar",
+        image:
+          "https://ui-avatars.com/api/?name=Aaditya+Kumar&background=0D0D0C&color=fff",
+      },
+      {
+        name: "Anju",
+        image:
+          "https://ui-avatars.com/api/?name=Anju&background=0D0D0C&color=fff",
+      },
+      {
+        name: "Ashutosh Tiwari",
+        image:
+          "https://ui-avatars.com/api/?name=Ashutosh+Tiwari&background=0D0D0C&color=fff",
+      },
+      {
+        name: "Jayesh",
+        image:
+          "https://ui-avatars.com/api/?name=Jayesh&background=0D0D0C&color=fff",
+      },
+      {
+        name: "Krish Gupta",
+        image:
+          "https://ui-avatars.com/api/?name=Krish+Gupta&background=0D0D0C&color=fff",
+      },
+      {
+        name: "Lakshman",
+        image:
+          "https://ui-avatars.com/api/?name=Lakshman&background=0D0D0C&color=fff",
+      },
+    ],
   },
 ];
 
