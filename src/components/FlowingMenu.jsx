@@ -149,26 +149,30 @@ const MenuItem = ({
 
   return (
     <div
-      className="flex-1 relative overflow-hidden"
+      className="grow lg:flex-1 min-h-22.5 lg:min-h-0 relative overflow-hidden"
       ref={itemRef}
       style={{ borderTop: isFirst ? "none" : `1px solid ${borderColor}` }}
     >
       <Link
-        className="flex items-center justify-between h-full w-full px-6 md:px-8 relative cursor-pointer uppercase no-underline font-semibold text-[2.2vh] md:text-[3vh]"
+        className="flex flex-col sm:flex-row sm:items-center justify-between h-full w-full px-6 md:px-8 py-5 lg:py-0 relative cursor-pointer uppercase no-underline font-semibold text-lg md:text-xl lg:text-[2.5vh]"
         to={link}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         style={{ color: textColor }}
       >
-        <div className="flex items-baseline gap-4 md:gap-6 text-left">
-          <span className="font-mono text-xs text-muted-foreground font-normal normal-case">
+        <div className="flex items-baseline gap-3 md:gap-6 text-left w-full sm:w-auto">
+          <span className="font-mono text-xs text-muted-foreground font-normal normal-case shrink-0">
             No. {String(index + 1).padStart(2, "0")}
           </span>
-          <span className="font-display tracking-tight">{text}</span>
+          <span className="font-display tracking-tight wrap-break-word pr-4">
+            {text}
+          </span>
         </div>
-        <div className="hidden md:flex items-center gap-6 lg:gap-8 font-mono text-[10px] md:text-xs uppercase tracking-widest font-normal text-muted-foreground">
-          <span className="normal-case">{tagline}</span>
-          <span className="text-primary font-semibold">
+        <div className="flex items-center justify-between sm:justify-end gap-4 md:gap-6 lg:gap-8 font-mono text-[10px] md:text-xs uppercase tracking-widest font-normal text-muted-foreground mt-2 sm:mt-0 w-full sm:w-auto">
+          <span className="normal-case truncate max-w-50 md:max-w-75 lg:max-w-100 hidden md:inline-block">
+            {tagline}
+          </span>
+          <span className="text-primary font-semibold shrink-0">
             {day} · {time}
           </span>
         </div>
