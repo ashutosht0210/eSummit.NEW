@@ -51,7 +51,7 @@ export function Events() {
         </div>
 
         {/* Right Column: Flowing Menu */}
-        <div className="lg:col-span-8 h-[75vh] border-t border-b border-border">
+        <div className="lg:col-span-8 h-auto lg:h-[75vh] border-t border-b border-border">
           <FlowingMenu items={menuItems} />
         </div>
       </div>
