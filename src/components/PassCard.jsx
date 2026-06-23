@@ -146,9 +146,9 @@ export function PassCard({
         <div className="w-8 h-1 bg-neutral-950 border border-border/30 rounded-full" />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-card/85 to-card/95 backdrop-blur-xl z-0" />
-      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.012)_1px,transparent_1px)] [background-size:14px_14px] pointer-events-none z-0" />
-      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/[0.01] to-white/[0.03] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-linear-to-b from-card/85 to-card/95 backdrop-blur-xl z-0" />
+      <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.012)_1px,transparent_1px)] bg-size-[14px_14px] pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/1 to-white/3 pointer-events-none z-0" />
 
       {qty > 0 && (
         <div className="absolute inset-0 racing-stripe opacity-[0.03] pointer-events-none z-0" />
@@ -180,9 +180,9 @@ export function PassCard({
       </div>
 
       <div className="absolute top-9 right-6 flex gap-1 transform -skew-x-12 opacity-[0.06] select-none pointer-events-none z-0">
-        <div className={`w-1.5 h-8 bg-gradient-to-b ${style.stripeGradient}`} />
-        <div className={`w-1.5 h-8 bg-gradient-to-b ${style.stripeGradient}`} />
-        <div className={`w-1.5 h-8 bg-gradient-to-b ${style.stripeGradient}`} />
+        <div className={`w-1.5 h-8 bg-linear-to-b ${style.stripeGradient}`} />
+        <div className={`w-1.5 h-8 bg-linear-to-b ${style.stripeGradient}`} />
+        <div className={`w-1.5 h-8 bg-linear-to-b ${style.stripeGradient}`} />
       </div>
 
       <div className="absolute left-2 top-[16%] h-[26%] w-3 flex flex-col justify-between opacity-[0.06] group-hover:opacity-[0.14] transition-opacity duration-300 pointer-events-none select-none z-10">
@@ -198,12 +198,12 @@ export function PassCard({
 
       {renderRacetrack(p.id, style.accentColorText)}
 
-      <div className="absolute right-[-5%] bottom-[45%] text-9xl font-black italic tracking-tighter text-foreground/[0.015] select-none pointer-events-none uppercase font-display z-0">
+      <div className="absolute right-[-5%] bottom-[45%] text-9xl font-black italic tracking-tighter text-foreground/1.5 select-none pointer-events-none uppercase font-display z-0">
         {style.watermark}
       </div>
 
       {/* ── TOP EVENT DETAILS AREA (Badge Front) ── */}
-      <div className="p-6 sm:p-8 pb-5 flex flex-col z-10 relative h-[210px] shrink-0 justify-start">
+      <div className="p-6 sm:p-8 pb-5 flex flex-col z-10 relative h-52.5 shrink-0 justify-start">
         <div className="flex justify-between items-center mt-2">
           <span className="font-mono text-[9px] font-bold uppercase tracking-widest text-muted-foreground/80">
             SEC. A // PIT LANE
@@ -250,9 +250,9 @@ export function PassCard({
         </div>
       </div>
 
-      <div className="relative w-[calc(100%+48px)] sm:w-[calc(100%+64px)] mx-[-24px] sm:mx-[-32px] my-4 pointer-events-none select-none z-20">
-        <div className="absolute left-[-8px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-background border-r border-border/50" />
-        <div className="absolute right-[-8px] top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-background border-l border-border/50" />
+      <div className="relative w-[calc(100%+48px)] sm:w-[calc(100%+64px)] -mx-6 sm-mx-8 my-4 pointer-events-none select-none z-20">
+        <div className="absolute -left-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-background border-r border-border/50" />
+        <div className="absolute -right-2 top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-background border-l border-border/50" />
         <div className="w-full border-t border-dashed border-border/60" />
       </div>
 
