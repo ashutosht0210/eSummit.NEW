@@ -2,31 +2,60 @@ import { useState, useEffect } from "react";
 
 export const API_BASE = "http://localhost:3000";
 
-// Fallback/Mock data if backend is offline
 export const FALLBACK_PASSES = [
   {
-    id: "pit",
-    name: "Pit Pass",
-    price: 299,
-    perks: ["Access to all keynotes", "Expo floor", "Refreshments"],
-  },
-  {
-    id: "grid",
-    name: "Grid Pass",
-    price: 499,
-    perks: ["All Pit perks", "Workshops", "Networking dinner", "Swag kit"],
-  },
-  {
-    id: "podium",
-    name: "Podium Pass",
-    price: 899,
+    id: "sprint",
+    name: "Sprint Pass",
+    price: 100,
     perks: [
-      "All Grid perks",
-      "VIP lounge",
-      "Founder meet & greet",
-      "Track day ride",
+      "One-day access to all workshops",
+      "Access to all talks and speaker panels",
+      "Entry to product stalls and open events"
     ],
+    tag: "SINGLE DAY",
+    badge: "Fast Track"
   },
+  {
+    id: "grand-prix",
+    name: "Grand Prix Pass",
+    price: 200,
+    perks: [
+      "Full access to all E-Summit’25 events for both days",
+      "Access to all workshops & speaker panels",
+      "Entry to product stalls and open events"
+    ],
+    tag: "2 DAYS ACCESS",
+    badge: "Full Throttle"
+  },
+  {
+    id: "pitstop-cabin",
+    name: "Pitstop Cabin",
+    price: 699,
+    perks: [
+      "Complimentary stay",
+      "3 meals per day (Breakfast, Lunch, Dinner)",
+      "Starter kit"
+    ],
+    tag: "STAY PASS - BASIC",
+    badge: "Refuel & Recharge",
+    duration: "8 AM, 23rd Aug 2025 to 10 AM, 25th Aug 2025",
+    extra: "Extra stay beyond schedule charged separately"
+  },
+  {
+    id: "podium-suite",
+    name: "Podium Suite",
+    price: 999,
+    perks: [
+      "Complimentary stay",
+      "3 meals per day (Breakfast, Lunch, Dinner)",
+      "Starter kit",
+      "Exclusive E-Summit swags"
+    ],
+    tag: "STAY PASS - PREMIUM",
+    badge: "Championship Tier",
+    duration: "8 AM, 23rd Aug 2025 to 10 AM, 25th Aug 2025",
+    extra: "Extra stay beyond schedule charged separately"
+  }
 ];
 
 export const FALLBACK_MERCH = [
