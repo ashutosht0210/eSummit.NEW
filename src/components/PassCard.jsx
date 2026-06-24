@@ -80,11 +80,6 @@ export function PassCard({
       <div className="absolute inset-0 bg-[radial-gradient(rgba(255,255,255,0.012)_1px,transparent_1px)] bg-size-[14px_14px] pointer-events-none z-0" />
       <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/1 to-white/3 pointer-events-none z-0" />
 
-      {/* Decorative stripe pattern when item is selected */}
-      {qty > 0 && (
-        <div className="absolute inset-0 racing-stripe opacity-[0.03] pointer-events-none z-0" />
-      )}
-
       {/* Glow blob background effect */}
       <div
         className={`absolute top-[-25%] right-[-25%] w-56 h-56 rounded-full blur-3xl pointer-events-none transition-all duration-700 z-0 ${style.glowBlob}`}
