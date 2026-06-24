@@ -3,8 +3,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { SPONSORS } from "@/lib/store";
 import { ComingSoonCard } from "@/components/ComingSoonCard";
-import { SponsorCard } from "@/components/SponsorCard";
-import { TierSection, groupByTier } from "@/components/SponsorHelpers";
+import { GridSection, groupByTierSize } from "@/components/SponsorHelpers";
 
 /* Tier and track helpers moved to src/components/SponsorHelpers.jsx */
 
@@ -29,7 +28,25 @@ function AmbientOrbs() {
 
 export function Sponsors() {
   useDocumentTitle("Our Partners — E-Summit 2026");
-  const grouped = groupByTier(SPONSORS);
+  
+  const TIER_ORDER_LOWER = [
+    "title sponsor",
+    "co-powered by",
+    "ev tech partner",
+    "mobility partner",
+    "automotive partner",
+    "racing partner",
+    "innovation sponsor",
+    "energy sponsor",
+  ];
+  const getTierRank = (t) => {
+    const idx = TIER_ORDER_LOWER.indexOf(t?.toLowerCase());
+    return idx === -1 ? 99 : idx;
+  };
+  
+  const sortedSponsors = [...SPONSORS].sort((a, b) => getTierRank(a.tier) - getTierRank(b.tier));
+  const groupedSizes = groupByTierSize(SPONSORS);
+  const tierCount = new Set(SPONSORS.map(s => s.tier?.toLowerCase())).size;
 
   return (
     <div className="relative pt-32 pb-24 mx-auto max-w-400 px-6 lg:px-12 min-h-screen flex flex-col">
@@ -56,7 +73,7 @@ export function Sponsors() {
         </div>
 
         {/* Sponsor Cards */}
-        {/* <div
+        <div
           className="mt-14 flex gap-8 sm:gap-16 py-5 px-6 rounded-2xl"
           style={{
             background: "rgba(255,255,255,0.02)",
@@ -65,7 +82,7 @@ export function Sponsors() {
         >
           {[
             { value: SPONSORS.length, label: "Partners" },
-            { value: grouped.length, label: "Tiers" },
+            { value: tierCount, label: "Tiers" },
             { value: "2026", label: "Season" },
           ].map(({ value, label }) => (
             <div key={label} className="flex flex-col">
@@ -85,12 +102,16 @@ export function Sponsors() {
           ))}
         </div>
 
-        {grouped.map(([tier, sponsors], i) => (
-          <TierSection key={tier} tier={tier} sponsors={sponsors} isFirst={i === 0} />
-        ))} */}
+        {groupedSizes.map((group) => (
+          <GridSection 
+            key={group.key} 
+            group={group} 
+            globalSortedSponsors={sortedSponsors} 
+          />
+        ))}
 
         {/* Coming Soon Card */}
-        <div className="mt-16 flex-1 flex items-center justify-center">
+        {/* <div className="mt-16 flex-1 flex items-center justify-center">
           <ComingSoonCard
             title={
               <>
@@ -102,7 +123,7 @@ export function Sponsors() {
             ctaText="Become a Partner →"
             ctaHref="mailto:outreach.iic@iitdh.ac.in?subject=Sponsorship%20Inquiry%20-%20ESummit%202026"
           />
-        </div>
+        </div> */}
 
         <div
           className="mt-24 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 py-8 px-8 rounded-2xl"
