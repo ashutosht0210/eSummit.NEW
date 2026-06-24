@@ -57,6 +57,11 @@ export function PassCard({
     }
   };
 
+  const showStayProvision = Boolean(p.duration) || p.id === "sprint" || p.id === "grand-prix";
+  const stayProvisionLabel = p.duration
+    ? p.duration
+    : "No stay included. Accommodation can be arranged separately at daily rates.";
+
   return (
     <div
       className={`group relative overflow-hidden border flex flex-col rounded-3xl transition-all duration-500 hover:-translate-y-3 hover:scale-[1.02] hover:shadow-[0_25px_50px_rgba(0,0,0,0.7)] z-10 ${
@@ -207,8 +212,8 @@ export function PassCard({
           ))}
         </ul>
 
-        {/* Stay provisions (optional) */}
-        {p.duration && (
+        {/* Stay provisions (included or fallback note) */}
+        {showStayProvision && (
           <div className="mt-4 p-3 rounded-2xl bg-secondary/15 border border-border/30 text-xs space-y-1.5 backdrop-blur-md relative overflow-hidden group-hover:border-primary/10 transition-all duration-300">
             <div className="flex items-center gap-1.5 text-foreground font-bold font-display text-xs tracking-wider">
               <Calendar className={`w-3.5 h-3.5 ${style.accentColorText} shrink-0`} />
@@ -225,7 +230,7 @@ export function PassCard({
 
             <div className="space-y-1 font-mono text-[11px] leading-relaxed text-muted-foreground">
               <div>
-                <span className="text-foreground/80 font-sans font-semibold">Stay:</span> {p.duration}
+                <span className="text-foreground/80 font-sans font-semibold">Stay:</span> {stayProvisionLabel}
               </div>
               {p.extra && (
                 <div className="text-[9.5px] text-muted-foreground/70 italic flex items-center gap-1.5 pt-0.5">
