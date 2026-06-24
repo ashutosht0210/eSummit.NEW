@@ -100,7 +100,7 @@ export function Buy() {
         </div>
 
         {totalQty > 0 && (
-          <div className="mt-12 sticky bottom-4 bg-card/90 backdrop-blur-md border border-primary p-4 sm:p-6 flex flex-wrap justify-between items-center gap-4 z-10 shadow-lg rounded-2xl">
+          <div className="mt-12 fixed bottom-4 left-0 right-0 mx-auto w-full max-w-400 lg:sticky lg:bottom-4 bg-card/90 backdrop-blur-md border border-border/30 p-4 sm:p-6 flex flex-wrap justify-between items-center gap-4 z-50 shadow-lg rounded-2xl">
             <div>
               <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                 Order total ({totalQty} of {MAX} max)
