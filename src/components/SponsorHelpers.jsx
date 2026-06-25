@@ -98,7 +98,7 @@ export function TrackLine({ accent }) {
       <div
         className="absolute top-0 left-0 h-full w-24"
         style={{
-          background: `linear-gradient(90deg, transparent, ${accent}, transparent)`,
+          background: `#F97316`,
           animation: "slide-line 3s linear infinite",
         }}
       />

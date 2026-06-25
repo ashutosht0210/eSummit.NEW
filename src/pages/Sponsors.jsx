@@ -3,46 +3,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { SPONSORS } from "@/lib/store";
 import { ComingSoonCard } from "@/components/ComingSoonCard";
-import { SponsorCard } from "@/components/SponsorCard";
 import { TierSection, groupByTier } from "@/components/SponsorHelpers";
-
-/* Tier and track helpers moved to src/components/SponsorHelpers.jsx */
-
-function AmbientOrbs() {
-  return (
-    <div
-      className="fixed inset-0 pointer-events-none overflow-hidden"
-      style={{ zIndex: 0 }}
-    >
-      <div
-        className="absolute"
-        style={{
-          top: "-20vh",
-          right: "-15vw",
-          width: "60vw",
-          height: "60vw",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 65%)",
-          filter: "blur(40px)",
-        }}
-      />
-      <div
-        className="absolute"
-        style={{
-          bottom: "-10vh",
-          left: "-10vw",
-          width: "40vw",
-          height: "40vw",
-          borderRadius: "50%",
-          background:
-            "radial-gradient(circle, rgba(249,115,22,0.04) 0%, transparent 65%)",
-          filter: "blur(60px)",
-        }}
-      />
-    </div>
-  );
-}
 
 export function Sponsors() {
   useDocumentTitle("Our Partners — E-Summit 2026");
@@ -57,10 +18,8 @@ export function Sponsors() {
         }
       `}</style>
 
-      <AmbientOrbs />
-
       <div className="relative z-10 max-w-5xl w-full mx-auto">
-        <div className="max-w-4xl">
+        {/* <div className="max-w-4xl">
           <PageHeader tag="Pit Crew" title="Our Partners." />
           <p
             className="mt-6 text-sm sm:text-base leading-relaxed max-w-2xl"
@@ -74,39 +33,13 @@ export function Sponsors() {
             in enabling the next generation of builders.
           </p>
         </div>
-
-        {/* Sponsor Cards */}
-        {/* <div
-          className="mt-14 flex gap-8 sm:gap-16 py-5 px-6 rounded-2xl"
-          style={{
-            background: "rgba(255,255,255,0.02)",
-            border: "1px solid rgba(255,255,255,0.06)",
-          }}
-        >
-          {[
-            { value: SPONSORS.length, label: "Partners" },
-            { value: grouped.length, label: "Tiers" },
-            { value: "2026", label: "Season" },
-          ].map(({ value, label }) => (
-            <div key={label} className="flex flex-col">
-              <span
-                className="font-display font-black text-2xl sm:text-3xl leading-none"
-                style={{ color: "#F97316" }}
-              >
-                {value}
-              </span>
-              <span
-                className="font-mono text-xs uppercase tracking-widest mt-1"
-                style={{ color: "rgba(255,255,255,0.3)" }}
-              >
-                {label}
-              </span>
-            </div>
-          ))}
-        </div>
-
         {grouped.map(([tier, sponsors], i) => (
-          <TierSection key={tier} tier={tier} sponsors={sponsors} isFirst={i === 0} />
+          <TierSection
+            key={tier}
+            tier={tier}
+            sponsors={sponsors}
+            isFirst={i === 0}
+          />
         ))} */}
 
         {/* Coming Soon Card */}
