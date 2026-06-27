@@ -5,27 +5,6 @@ import { SPONSORS } from "@/lib/store";
 import { ComingSoonCard } from "@/components/ComingSoonCard";
 import { GridSection, groupByTierSize } from "@/components/SponsorHelpers";
 
-/* Tier and track helpers moved to src/components/SponsorHelpers.jsx */
-
-function AmbientOrbs() {
-  return (
-    <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
-      <div className="absolute" style={{
-        top: "-20vh", right: "-15vw",
-        width: "60vw", height: "60vw", borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(249,115,22,0.06) 0%, transparent 65%)",
-        filter: "blur(40px)",
-      }} />
-      <div className="absolute" style={{
-        bottom: "-10vh", left: "-10vw",
-        width: "40vw", height: "40vw", borderRadius: "50%",
-        background: "radial-gradient(circle, rgba(249,115,22,0.04) 0%, transparent 65%)",
-        filter: "blur(60px)",
-      }} />
-    </div>
-  );
-}
-
 export function Sponsors() {
   useDocumentTitle("Our Partners — E-Summit 2026");
   
@@ -57,14 +36,15 @@ export function Sponsors() {
         }
       `}</style>
 
-      <AmbientOrbs />
-
       <div className="relative z-10 max-w-5xl w-full mx-auto">
-        <div className="max-w-4xl">
+        {/* <div className="max-w-4xl">
           <PageHeader tag="Pit Crew" title="Our Partners." />
           <p
             className="mt-6 text-sm sm:text-base leading-relaxed max-w-2xl"
-            style={{ color: "rgba(255,255,255,0.45)", fontFamily: "sans-serif" }}
+            style={{
+              color: "rgba(255,255,255,0.45)",
+              fontFamily: "sans-serif",
+            }}
           >
             The engines fueling E-Summit 2026. Met at the intersection of
             venture, engineering, and design, our partners play a crucial role
