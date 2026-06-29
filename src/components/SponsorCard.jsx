@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { SponsorLogo } from "@/components/SponsorLogo";
 
 export function SponsorCard({ sponsor, config, position }) {
