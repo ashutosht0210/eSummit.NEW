@@ -1,50 +1,52 @@
 import { PageHeader } from "@/components/ui/PageHeader";
-import { Button } from "@/components/ui/Button";
 import { useDocumentTitle } from "@/hooks/useDocumentTitle";
 import { ComingSoonCard } from "@/components/ComingSoonCard";
-import { useState } from "react";
-import { PASSES } from "@/lib/store";
-import { PassCard } from "@/components/PassCard";
-import { CheckoutModal } from "@/components/CheckoutModal";
-import { OrderStatusModal } from "@/components/OrderStatusModal";
-import { useLocalStorage } from "@/hooks/useLocalStorage";
+// import { Button } from "@/components/ui/Button";
+// import { useState } from "react";
+// import { PASSES } from "@/lib/store";
+// import { PassCard } from "@/components/PassCard";
+// import { CheckoutModal } from "@/components/CheckoutModal";
+// import { OrderStatusModal } from "@/components/OrderStatusModal";
+// import { useLocalStorage } from "@/hooks/useLocalStorage";
 
 const MAX = 5;
 
 export function Buy() {
   useDocumentTitle("Get Your Pass — E-Summit 2026");
 
-  const [cart, setCart] = useLocalStorage("es26_cart", []);
-  const [checkoutOpen, setCheckoutOpen] = useState(false);
-  const [statusOpen, setStatusOpen] = useState(false);
-
-  const totalQty = cart.reduce((a, c) => a + c.qty, 0);
-  const total = cart.reduce((a, c) => {
-    const p = PASSES.find((pass) => pass.id === c.passId);
-    return a + (p?.price ?? 0) * c.qty;
-  }, 0);
-
-  const update = (passId, delta) => {
-    setCart((prev) => {
-      const existing = prev.find((c) => c.passId === passId);
-      const currentTotal = prev.reduce((a, c) => a + c.qty, 0);
-      let next;
-      if (existing) {
-        const newQty = Math.max(0, existing.qty + delta);
-        if (delta > 0 && currentTotal >= MAX) return prev;
-        next =
-          newQty === 0
-            ? prev.filter((c) => c.passId !== passId)
-            : prev.map((c) =>
-                c.passId === passId ? { ...c, qty: newQty } : c,
-              );
-      } else {
-        if (delta <= 0 || currentTotal >= MAX) return prev;
-        next = [...prev, { passId, qty: 1 }];
-      }
-      return next;
-    });
-  };
+  // ── Uncomment when passes go live ────────────────────────────────────────
+  // const [cart, setCart] = useLocalStorage("es26_cart", []);
+  // const [checkoutOpen, setCheckoutOpen] = useState(false);
+  // const [statusOpen, setStatusOpen] = useState(false);
+  
+  // const totalQty = cart.reduce((a, c) => a + c.qty, 0);
+  // const total = cart.reduce((a, c) => {
+  //   const p = PASSES.find((pass) => pass.id === c.passId);
+  //   return a + (p?.price ?? 0) * c.qty;
+  // }, 0);
+  
+  // const update = (passId, delta) => {
+  //   setCart((prev) => {
+  //     const existing = prev.find((c) => c.passId === passId);
+  //     const currentTotal = prev.reduce((a, c) => a + c.qty, 0);
+  //     let next;
+  //     if (existing) {
+  //       const newQty = Math.max(0, existing.qty + delta);
+  //       if (delta > 0 && currentTotal >= MAX) return prev;
+  //       next =
+  //         newQty === 0
+  //           ? prev.filter((c) => c.passId !== passId)
+  //           : prev.map((c) =>
+  //               c.passId === passId ? { ...c, qty: newQty } : c,
+  //             );
+  //     } else {
+  //       if (delta <= 0 || currentTotal >= MAX) return prev;
+  //       next = [...prev, { passId, qty: 1 }];
+  //     }
+  //     return next;
+  //   });
+  // };
+  // ─────────────────────────────────────────────────────────────────────────
 
   return (
     <div className="pt-32 pb-24 text-left min-h-screen flex flex-col">
@@ -76,10 +78,10 @@ export function Buy() {
           />
         </div>
 
-        {/*
-        ── PASS GRID (uncomment when passes go live) ──────────────────────────
-          */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        {/* ── PASS GRID (uncomment when passes go live) ────────────────────────── */}
+
+        {/* <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {PASSES.map((p) => {
             const item = cart.find((c) => c.passId === p.id);
             const qty = item?.qty ?? 0;
@@ -98,7 +100,7 @@ export function Buy() {
         </div>
 
         {totalQty > 0 && (
-          <div className="mt-12 sticky bottom-4 bg-card/90 backdrop-blur-md border border-primary p-4 sm:p-6 flex flex-wrap justify-between items-center gap-4 z-10 shadow-lg rounded-2xl">
+          <div className="mt-12 fixed bottom-4 left-0 right-0 mx-auto w-full max-w-400 lg:sticky lg:bottom-4 bg-card/90 backdrop-blur-md border border-border/30 p-4 sm:p-6 flex flex-wrap justify-between items-center gap-4 z-50 shadow-lg rounded-2xl">
             <div>
               <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
                 Order total ({totalQty} of {MAX} max)
@@ -115,12 +117,12 @@ export function Buy() {
               Checkout →
             </Button>
           </div>
-        )}
+        )} */}
 
         {/* ─────────────────────────────────────────────────────────────────────── */}
       </div>
 
-      {checkoutOpen && (
+      {/* {checkoutOpen && (
         <CheckoutModal
           cart={cart}
           total={total}
@@ -131,7 +133,7 @@ export function Buy() {
           }}
         />
       )}
-      {statusOpen && <OrderStatusModal onClose={() => setStatusOpen(false)} />}
+      {statusOpen && <OrderStatusModal onClose={() => setStatusOpen(false)} />} */}
     </div>
   );
 }
