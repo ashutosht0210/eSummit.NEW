@@ -8,32 +8,27 @@ jobs:
   deploy:
     name: Build & Deploy to VPS
     runs-on: self-hosted
+    defaults:
+      run:
+        shell: bash -l {0}
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Load NVM + verify Node
-        run: |
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          echo "Node: $(node -v) | NPM: $(npm -v)"
+      - name: Verify Node
+        run: echo "Node: $(node -v) | NPM: $(npm -v)"
 
       - name: Install dependencies
-        run: |
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          npm ci
+        run: npm ci
 
       - name: Build
-        run: |
-          export NVM_DIR="$HOME/.nvm"
-          [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-          npm run build
+        run: npm run build
         env:
           VITE_API_URL: ${{ secrets.VITE_API_URL }}
 
       - name: Deploy to /var/www/iic/esummit
         run: |
           rm -rf /var/www/iic/esummit
+          mkdir -p /var/www/iic/esummit
           cp -r ./dist/* /var/www/iic/esummit/
