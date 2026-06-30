@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-export const API_BASE = "http://localhost:3000/api";
+export const API_BASE = "http://10.195.250.151:3000/api";
 
 export const FALLBACK_PASSES = [
   {
@@ -10,10 +10,10 @@ export const FALLBACK_PASSES = [
     perks: [
       "One-day access to all workshops",
       "Access to all talks and speaker panels",
-      "Entry to product stalls and open events"
+      "Entry to product stalls and open events",
     ],
     tag: "SINGLE DAY",
-    badge: "Fast Track"
+    badge: "Fast Track",
   },
   {
     id: "grand-prix",
@@ -22,10 +22,10 @@ export const FALLBACK_PASSES = [
     perks: [
       "Full access to all E-Summit’25 events for both days",
       "Access to all workshops & speaker panels",
-      "Entry to product stalls and open events"
+      "Entry to product stalls and open events",
     ],
     tag: "2 DAYS ACCESS",
-    badge: "Full Throttle"
+    badge: "Full Throttle",
   },
   {
     id: "pitstop-cabin",
@@ -34,12 +34,12 @@ export const FALLBACK_PASSES = [
     perks: [
       "Complimentary stay",
       "3 meals per day (Breakfast, Lunch, Dinner)",
-      "Starter kit"
+      "Starter kit",
     ],
     tag: "STAY PASS - BASIC",
     badge: "Refuel & Recharge",
     duration: "8 AM, 23rd Aug 2025 to 10 AM, 25th Aug 2025",
-    extra: "Extra stay beyond schedule charged separately"
+    extra: "Extra stay beyond schedule charged separately",
   },
   {
     id: "podium-suite",
@@ -49,13 +49,13 @@ export const FALLBACK_PASSES = [
       "Complimentary stay",
       "3 meals per day (Breakfast, Lunch, Dinner)",
       "Starter kit",
-      "Exclusive E-Summit swags"
+      "Exclusive E-Summit swags",
     ],
     tag: "STAY PASS - PREMIUM",
     badge: "Championship Tier",
     duration: "8 AM, 23rd Aug 2025 to 10 AM, 25th Aug 2025",
-    extra: "Extra stay beyond schedule charged separately"
-  }
+    extra: "Extra stay beyond schedule charged separately",
+  },
 ];
 
 export const FALLBACK_EVENTS = [
