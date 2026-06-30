@@ -35,5 +35,5 @@ jobs:
 
       - name: Deploy to /var/www/iic/esummit
         run: |
-          sudo rm -rf /var/www/iic/esummit
-          sudo cp -r dist/ /var/www/iic/esummit
+          rm -rf /var/www/iic/esummit
+          cp -r ./dist/* /var/www/iic/esummit/
